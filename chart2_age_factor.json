@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 100,
+  "title": {
+    "text": "Cancer Incidence by Age Bracket in 2023",
+    "subtitle": "Total diagnoses recorded across different age demographics",
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "subtitleFontSize": 12,
+    "subtitleColor": "gray",
+    "offset": 20
+  },
+  "data": {
+    "values": [
+      {"Age_Group": "0-14", "Cases": 3054},
+      {"Age_Group": "15-40", "Cases": 14600},
+      {"Age_Group": "41-59", "Cases": 39767},
+      {"Age_Group": "60+", "Cases": 137665}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#8b0000"},
+      "encoding": {
+        "y": {
+          "field": "Age_Group",
+          "type": "ordinal",
+          "title": "Age Group",
+          "sort": ["0-14", "15-40", "41-59", "60+"],
+          "axis": {
+            "grid": false,
+            "labelFontSize": 12,
+            "titleFontSize": 12
+          } 
+        },
+        "x": {
+          "field": "Cases", 
+          "type": "quantitative", 
+          "axis": {"grid": false}
+        },
+        "x2": {"value": 0}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 150, "color": "#8b0000", "opacity": 1},
+      "encoding": {
+        "y": {
+          "field": "Age_Group",
+          "type": "ordinal",
+          "sort": ["0-14", "15-40", "41-59", "60+"]
+        },
+        "x": {
+          "field": "Cases",
+          "type": "quantitative",
+          "title": "Number of Cases",
+          "axis": {
+            "grid": false,
+            "labelFontSize": 12,
+            "titleFontSize": 12
+          }
+        },
+        "tooltip": [
+          {"field": "Age_Group", "type": "ordinal", "title": "Age Bracket"},
+          {"field": "Cases", "type": "quantitative", "title": "Total Diagnoses", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}

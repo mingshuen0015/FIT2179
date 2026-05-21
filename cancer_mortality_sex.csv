@@ -1,0 +1,29 @@
+﻿State,Gender,MortalityRate
+Johor,Male,60.4
+Johor,Female,74.9
+Kedah,Male,74.0
+Kedah,Female,80.8
+Kelantan,Male,59.3
+Kelantan,Female,72.2
+Melaka,Male,69.3
+Melaka,Female,72.9
+Negeri Sembilan,Male,68.4
+Negeri Sembilan,Female,77.7
+Pahang,Male,62.8
+Pahang,Female,72.4
+Perak,Male,74.7
+Perak,Female,78.2
+Perlis,Male,63.1
+Perlis,Female,76.5
+Pulau Pinang,Male,74.1
+Pulau Pinang,Female,82.0
+Sabah,Male,48.0
+Sabah,Female,56.7
+Sarawak,Male,53.2
+Sarawak,Female,59.5
+Selangor,Male,54.7
+Selangor,Female,71.0
+Terengganu,Male,63.2
+Terengganu,Female,66.8
+W.P. Kuala Lumpur,Male,55.9
+W.P. Kuala Lumpur,Female,71.9

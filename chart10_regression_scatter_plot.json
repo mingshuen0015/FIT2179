@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega-lite.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Gap Analysis: Bed Availability vs. Cancer Mortality",
+    "subtitle": "Is there a correlation between infrastructure and outcomes?",
+    "anchor": "start"
+  },
+  "width": 400,
+  "height": 300,
+  "data": {
+    "url": "merged_beds_mortality.csv"
+  },
+  "layer": [
+    {
+      "mark": {"type": "circle", "size": 150, "color": "#1f77b4", "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "x": {
+          "field": "beds", 
+          "type": "quantitative", 
+          "title": "Total MOH Hospital Beds",
+          "scale": {"zero": false}
+        },
+        "y": {
+          "field": "MortalityRate", 
+          "type": "quantitative", 
+          "title": "Cancer Mortality Rate (per 100k)",
+          "scale": {"zero": false}
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal"},
+          {"field": "beds", "type": "quantitative", "title": "Beds", "format": ","},
+          {"field": "MortalityRate", "type": "quantitative", "title": "Mortality Rate", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 8, "dy": -4, "fontSize": 11},
+      "encoding": {
+        "x": {"field": "beds", "type": "quantitative"},
+        "y": {"field": "MortalityRate", "type": "quantitative"},
+        "text": {"field": "State", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "firebrick", "strokeDash": [5, 5]},
+      "transform": [{"regression": "MortalityRate", "on": "beds"}],
+      "encoding": {
+        "x": {"field": "beds", "type": "quantitative"},
+        "y": {"field": "MortalityRate", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}

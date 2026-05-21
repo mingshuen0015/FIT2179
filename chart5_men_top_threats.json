@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top Cancer Threats: Men (2017-2021)",
+    "subtitle": "Incidence rate per 100,000 population",
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": "bold"
+  },
+  "width": 300,
+  "height": 300,
+  "data": {
+    "values": [
+      {"Cancer_Type": "Colorectal", "Incidence": 18.8},
+      {"Cancer_Type": "Lung", "Incidence": 16.0},
+      {"Cancer_Type": "Prostate", "Incidence": 9.3},
+      {"Cancer_Type": "Nasopharynx", "Incidence": 6.4},
+      {"Cancer_Type": "Breast", "Incidence": 0.3}
+    ]
+  },
+  "mark": {"type": "arc", "innerRadius": 70, "stroke": "white", "strokeWidth": 2},
+  "encoding": {
+    "theta": {"field": "Incidence", "type": "quantitative"},
+    "color": {
+      "field": "Cancer_Type",
+      "type": "nominal",
+      "scale": {"scheme": "tableau10"},
+      "legend": {"title": "Cancer Type", "orient": "bottom"}
+    },
+    "tooltip": [
+      {"field": "Cancer_Type", "type": "nominal"},
+      {"field": "Incidence", "type": "quantitative", "title": "Incidence Rate"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}

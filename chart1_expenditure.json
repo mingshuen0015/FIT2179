@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "MOH Total Health Expenditure (2013-2022)",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "url": "mnha_moh.csv"
+  },
+  "mark": {
+    "type": "area",
+    "line": {"color": "#d95f02"},
+    "color": {
+      "gradient": "linear",
+      "stops": [
+        {"offset": 0, "color": "white"},
+        {"offset": 1, "color": "#d95f02"}
+      ]
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "field": "expenditure",
+      "type": "quantitative",
+      "title": "Expenditure (RM)"
+    },
+    "tooltip": [
+      {"field": "date", "type": "temporal", "title": "Year", "format": "%Y"},
+      {"field": "expenditure", "type": "quantitative", "title": "Total RM", "format": ",.0f"}
+    ]
+  }
+}

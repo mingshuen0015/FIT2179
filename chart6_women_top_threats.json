@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top Cancer Threats: Women (2017-2021)",
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": "bold"
+  },
+  "width": 400,
+  "height": 300,
+  "data": {
+    "values": [
+      {"Cancer_Type": "Breast", "Incidence": 34.1, "x0": 0, "x1": 0.5, "y0": 0, "y1": 1},
+      {"Cancer_Type": "Colorectal", "Incidence": 12.7, "x0": 0.5, "x1": 1, "y0": 0, "y1": 0.5},
+      {"Cancer_Type": "Cervical", "Incidence": 8.2, "x0": 0.5, "x1": 1, "y0": 0.5, "y1": 0.75},
+      {"Cancer_Type": "Lung", "Incidence": 6.0, "x0": 0.5, "x1": 0.75, "y0": 0.75, "y1": 1},
+      {"Cancer_Type": "Nasopharynx", "Incidence": 2.5, "x0": 0.75, "x1": 1, "y0": 0.75, "y1": 1}
+    ]
+  },
+  "mark": {"type": "rect", "stroke": "#fff", "strokeWidth": 2},
+  "encoding": {
+    "x": {"field": "x0", "type": "quantitative", "axis": null},
+    "x2": {"field": "x1"},
+    "y": {"field": "y0", "type": "quantitative", "axis": null},
+    "y2": {"field": "y1"},
+    "color": {
+      "field": "Cancer_Type",
+      "type": "nominal",
+      "scale": {"scheme": "tableau10"},
+      "legend": {"title": "Cancer Type", "orient": "right"}
+    },
+    "tooltip": [
+      {"field": "Cancer_Type", "type": "nominal"},
+      {"field": "Incidence", "type": "quantitative", "title": "Incidence Rate"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}

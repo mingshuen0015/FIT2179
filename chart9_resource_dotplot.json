@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega-lite.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "MOH Hospital Bed Distribution by State (2022)",
+    "subtitle": "Total bed capacity across states",
+    "anchor": "start"
+  },
+  "width": 400,
+  "height": 300,
+  "data": {
+    "url": "beds_by_state.csv"
+  },
+  "mark": {"type": "circle", "size": 150, "color": "#2ca02c"},
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {"title": null, "grid": true}
+    },
+    "x": {
+      "field": "beds",
+      "type": "quantitative",
+      "title": "Number of Hospital Beds",
+      "axis": {"grid": true}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "beds", "type": "quantitative", "title": "Total Beds"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}
