@@ -6,8 +6,8 @@
     "anchor": "start",
     "offset": 15
   },
-  "width": 800,
-  "height": 500,
+  "width": 600,
+  "height": 380,
   "data": {
     "values": [
       {"Cancer": "Breast", "Period": "2007-2011", "ASR": 31.1},
@@ -50,7 +50,7 @@
       "type": "nominal",
       "scale": {
         "domain": ["Breast", "Colorectal", "Lung", "Prostate", "Cervical"],
-        "range": ["#e377c2", "#ff7f0e", "#1f77b4", "#2ca02c", "#d62728"]
+        "range": ["#e377c2", "#ff7f0e", "#1f77b4", "#475569", "#9467bd"]
       },
       "legend": {
         "title": "Threat Vector", 
