@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega-lite.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Rising Tides: National Cancer Trends by Type (2007 - 2021)",
+    "subtitle": "Age-Standardised Incidence Rates (ASR) tracking specific prominent threats alongside background cases.",
+    "anchor": "start",
+    "offset": 15
+  },
+  "width": 800,
+  "height": 500,
+  "data": {
+    "values": [
+      {"Cancer": "Breast", "Period": "2007-2011", "ASR": 31.1},
+      {"Cancer": "Breast", "Period": "2012-2016", "ASR": 34.1},
+      {"Cancer": "Breast", "Period": "2017-2021", "ASR": 38.9},
+      {"Cancer": "Colorectal", "Period": "2007-2011", "ASR": 25.7},
+      {"Cancer": "Colorectal", "Period": "2012-2016", "ASR": 25.9},
+      {"Cancer": "Colorectal", "Period": "2017-2021", "ASR": 32.5},
+      {"Cancer": "Lung", "Period": "2007-2011", "ASR": 20.4},
+      {"Cancer": "Lung", "Period": "2012-2016", "ASR": 19.1},
+      {"Cancer": "Lung", "Period": "2017-2021", "ASR": 23.4},
+      {"Cancer": "Prostate", "Period": "2007-2011", "ASR": 6.6},
+      {"Cancer": "Prostate", "Period": "2012-2016", "ASR": 7.7},
+      {"Cancer": "Prostate", "Period": "2017-2021", "ASR": 9.3},
+      {"Cancer": "Cervical", "Period": "2007-2011", "ASR": 7.6},
+      {"Cancer": "Cervical", "Period": "2012-2016", "ASR": 6.2},
+      {"Cancer": "Cervical", "Period": "2017-2021", "ASR": 6.0}
+    ]
+  },
+  "mark": {
+    "type": "line", 
+    "point": {"filled": true, "size": 80}, 
+    "strokeWidth": 3.5
+  },
+  "encoding": {
+    "x": {
+      "field": "Period", 
+      "type": "ordinal", 
+      "title": "Registry Tracking Period",
+      "axis": {"labelAngle": 0, "labelFontSize": 11, "titleFontSize": 12}
+    },
+    "y": {
+      "field": "ASR", 
+      "type": "quantitative", 
+      "title": "Combined Incidence Rate (ASR per 100k)",
+      "scale": {"zero": false, "padding": 15}
+    },
+    "color": {
+      "field": "Cancer", 
+      "type": "nominal",
+      "scale": {
+        "domain": ["Breast", "Colorectal", "Lung", "Prostate", "Cervical"],
+        "range": ["#e377c2", "#ff7f0e", "#1f77b4", "#2ca02c", "#d62728"]
+      },
+      "legend": {
+        "title": "Threat Vector", 
+        "orient": "right", 
+        "titleFontSize": 12,
+        "labelFontSize": 11
+      }
+    },
+    "tooltip": [
+      {"field": "Cancer", "type": "nominal", "title": "Cancer Profile"},
+      {"field": "Period", "type": "ordinal", "title": "Registry Period"},
+      {"field": "ASR", "type": "quantitative", "title": "Incidence ASR", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}

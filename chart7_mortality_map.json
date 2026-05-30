@@ -3,10 +3,12 @@
   "title": {
     "text": "Cancer Mortality Rate by State (2023)",
     "subtitle": "Deaths per 100,000 population",
-    "anchor": "start"
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": "bold"
   },
-  "width": 500,
-  "height": 350,
+  "width": 400,
+  "height": 300,
   "data": {
     "url": "malaysia-states.topojson",
     "format": {"type": "topojson", "feature": "states"}
@@ -22,18 +24,46 @@
     }
   ],
   "projection": {"type": "mercator"},
-  "mark": {"type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5},
-  "encoding": {
-    "color": {
-      "field": "MortalityRate",
-      "type": "quantitative",
-      "scale": {"scheme": "reds"},
-      "legend": {"title": "Mortality Rate"}
+  "layer": [
+    {
+      "mark": {"type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5},
+      "encoding": {
+        "color": {
+          "field": "MortalityRate",
+          "type": "quantitative",
+          "scale": {"scheme": "oranges"},
+          "legend": {"title": "Mortality Rate"}
+        },
+        "tooltip": [
+          {"field": "properties.Name", "type": "nominal", "title": "State"},
+          {"field": "MortalityRate", "type": "quantitative", "title": "Mortality Rate", "format": ".1f"}
+        ]
+      }
     },
-    "tooltip": [
-      {"field": "properties.Name", "type": "nominal", "title": "State"},
-      {"field": "MortalityRate", "type": "quantitative", "title": "Mortality Rate", "format": ".1f"}
-    ]
-  },
-  "config": {"view": {"stroke": null}}
+    {
+      "data": {"values": [{}]},
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "text": [
+          "East Malaysia (Sabah & Sarawak) records notably lower",
+          "mortality rates compared to the heavily burdened",
+          "northern Peninsular states (e.g., Kedah, Perak, Perlis)."
+        ],
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#64748b",
+        "lineHeight": 17
+      },
+      "encoding": {
+        "x": {"value": 225},
+        "y": {"value": 310}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
 }

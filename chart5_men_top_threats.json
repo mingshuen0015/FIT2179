@@ -2,12 +2,12 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Top Cancer Threats: Men (2017-2021)",
-    "subtitle": "Incidence rate per 100,000 population",
-    "anchor": "start",
+    "subtitle": "Percentage of total cases by cancer type",
+    "anchor": "middle",
     "fontSize": 16,
     "fontWeight": "bold"
   },
-  "width": 300,
+  "width": 500,
   "height": 300,
   "data": {
     "values": [
@@ -15,23 +15,55 @@
       {"Cancer_Type": "Lung", "Incidence": 16.0},
       {"Cancer_Type": "Prostate", "Incidence": 9.3},
       {"Cancer_Type": "Nasopharynx", "Incidence": 6.4},
-      {"Cancer_Type": "Breast", "Incidence": 0.3}
+      {"Cancer_Type": "Breast", "Incidence": 0.3},
+      {"Cancer_Type": "Others", "Incidence": 49.2}
     ]
   },
-  "mark": {"type": "arc", "innerRadius": 70, "stroke": "white", "strokeWidth": 2},
-  "encoding": {
-    "theta": {"field": "Incidence", "type": "quantitative"},
-    "color": {
-      "field": "Cancer_Type",
-      "type": "nominal",
-      "scale": {"scheme": "tableau10"},
-      "legend": {"title": "Cancer Type", "orient": "bottom"}
+  "transform": [
+    {
+      "calculate": "round((datum.Incidence / 100) * 77692)",
+      "as": "Calculated_Cases"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 80, "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "theta": {
+          "field": "Incidence", 
+          "type": "quantitative"
+        },
+        "order": {
+          "field": "Incidence",
+          "sort": "descending"
+        },
+        "color": {
+          "field": "Cancer_Type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Colorectal", "Lung", "Prostate", "Nasopharynx", "Breast", "Others"],
+            "range": ["#1f77b4", "#ff7f0e", "#9467bd", "#8c564b", "#dd3497", "#cbd5e1"]
+          },
+          "legend": {
+            "title": null, 
+            "orient": "bottom", 
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {"field": "Cancer_Type", "type": "nominal", "title": "Type"},
+          {"field": "Incidence", "type": "quantitative", "title": "Percentage (%)", "format": ".1f"},
+          {"field": "Calculated_Cases", "type": "quantitative", "title": "Est. Cases", "format": ","}
+        ]
+      }
     },
-    "tooltip": [
-      {"field": "Cancer_Type", "type": "nominal"},
-      {"field": "Incidence", "type": "quantitative", "title": "Incidence Rate"}
-    ]
-  },
+    {
+      "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#1f77b4", "text": "77,692"}
+    },
+    {
+      "mark": {"type": "text", "fontSize": 12, "color": "gray", "dy": 22, "text": "Total Cases"}
+    }
+  ],
   "config": {
     "view": {"stroke": null},
     "background": "transparent"

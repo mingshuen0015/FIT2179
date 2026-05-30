@@ -8,40 +8,96 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
 
     <style>
+        /* Base font is sans-serif for readability of small text */
         body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; padding: 40px; color: #333; }
         .container { max-width: 1100px; margin: auto; }
-        .header { text-align: center; margin-bottom: 50px; }
         
-        .big-numbers { display: flex; justify-content: space-around; background: white; padding: 20px; border-radius: 10px; margin-bottom: 40px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Typography: Title and Headers changed to Serif */
+        h1, h2, h3 { font-family: 'Merriweather', 'Georgia', 'Times New Roman', serif; color: #1a202c; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header p { font-family: 'Segoe UI', sans-serif; color: #64748b; font-size: 1.1rem; }
+        
+        .big-numbers { 
+            display: flex; 
+            justify-content: space-around; 
+            background: white; 
+            padding: 30px 20px; 
+            border-radius: 10px; 
+            margin-bottom: 50px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            text-align: center;
+        }
+        .stat-box h3 {
+            font-size: 2.8rem;
+            color: #1a202c; 
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+        }
+        .stat-box p {
+            margin: 8px 0 0 0;
+            font-size: 1rem;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat-box span {
+            display: block;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
         .section { margin-bottom: 60px; }
         
         /* Layout Classes */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .stack { display: flex; flex-direction: column; gap: 20px; }
         
-        /* Card Styling - Added center alignment */
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: center; overflow-x: auto; }
+        /* Card Styling - Centers the charts to eliminate awkward white space */
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow-x: auto; }
+        
+        /* New class for side-by-side text annotations */
+        .text-panel { display: flex; align-items: center; padding: 0 20px; }
         
         p { line-height: 1.6; color: #555; margin-bottom: 20px; }
+        
+        /* Highlights key text in paragraphs */
+        p strong { color: #d95f02; font-weight: 700; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header class="header">
-        <h1>The Landscape of Cancer in Malaysia</h1>
+        <h1 style="font-size: 50px;">The Landscape of Cancer in Malaysia</h1>
         <p>Mortality, Demographics, and Healthcare Resource Allocation</p>
     </header>
 
     <div class="big-numbers">
-        <div>[BIG NUMBER 1]</div>
-        <div>[BIG NUMBER 2]</div>
-        <div>[BIG NUMBER 3]</div>
+        <div class="stat-box">
+            <h3 style="color: #d95f02;">168,823</h3>
+            <p>New Cancer Cases</p>
+            <span>Diagnosed nationwide (2017-2021)</span>
+        </div>
+        <div class="stat-box">
+            <h3 style="color: #1f77b4;">97,906</h3>
+            <p>Cancer Deaths</p>
+            <span>Recorded mortalities in the same period</span>
+        </div>
+        <div class="stat-box">
+            <h3 style="color: #e377c2;">64.8%</h3>
+            <p>Late-Stage Detection</p>
+            <span>Diagnosed at severe Stage III or IV</span>
+        </div>
     </div>
 
     <section class="section">
         <h2>Section 1: The National Overview & Financial Context</h2>
-        <p>[SECTION 1 ANNOTATION]</p>
+        <p style="font-size: 18px"><strong>Cancer cases are rising rapidly.</strong> Although Malaysia's healthcare spending has been increasing year-by-year 
+        <br>matching our South-East Asian counterparts, <strong>age remains a major factor</strong> in cancer treatment.
+        <br>Senior citizens face <strong>exponentially higher risks</strong> of developing cancer and experiencing mortality,
+        <br>requiring us to be <strong>proactive in our approach</strong> to prevention and treatment.</p>
         <div class="stack">
             <div class="card" id="vis1"></div>
             <div class="card" id="vis2"></div>
@@ -50,25 +106,44 @@
 
     <section class="section">
         <h2>Section 2: The Gender Divide</h2>
-        <p>[SECTION 2 ANNOTATION]</p>
+        <p style="font-size: 18px">The burden <strong>weighs heavily on both genders</strong>, but men face higher risks of mortality across almost all states.
+        <br> Tragically, <strong>late-stage detection is common</strong> amongst both genders, highlighting the <strong>urgent need for increased early screening</strong> initiatives.
+        </p>
         <div class="stack">
             <div class="card" id="vis3"></div>
-            <div class="card" id="vis4"></div>
+            <div class="card" id="vis4"></div>            
+            <div class="grid">
+                <div class="card" id="vis11"></div>
+                <div class="card" id="vis13"></div>
+            </div>
         </div>
     </section>
 
     <section class="section">
         <h2>Section 3: The Prominent Threats</h2>
-        <p>[SECTION 3 ANNOTATION]</p>
-        <div class="grid">
-            <div class="card" id="vis5"></div>
-            <div class="card" id="vis6"></div>
+        <p style="font-size: 18px">Cancer is a complex disease with multiple contributing factors. 
+        <br>Understanding the most significant threats is crucial for developing <strong>effective prevention and treatment</strong> strategies.
+        <br><strong>Breast and colorectal cancers</strong> are the leading causes of mortality and also the most commonly diagnosed cancers in Malaysia, 
+        <br>with lung and liver cancers following closely behind.
+        <br>Alarmingly, our historical trendlines show that there has been a <strong>sharp increase in the incidence</strong> of all the top 5 cancer types.
+        <br>This shows that the threat of cancer is <strong>growing rapidly</strong> and it requires <strong>immediate attention</strong>.
+        </p>
+        <div class="stack">
+            <div class="grid">
+                <div class="card" id="vis5"></div>
+                <div class="card" id="vis6"></div>
+            </div>
+            <div class="card" id="vis12"></div>
         </div>
     </section>
 
     <section class="section">
         <h2>Section 4: Mapping the Geographic Burden</h2>
-        <p>[SECTION 4 ANNOTATION]</p>
+        <p style="font-size: 18px">Cancer incidence and mortality rates <strong>vary significantly</strong> across different regions of Malaysia. 
+        <br>Mapping these patterns helps identify areas with the highest burden and informs <strong>targeted intervention strategies</strong>.
+        <br><strong>Northern states like Perlis and Kedah</strong> suffer from the highest mortality rates across the state whilst certain districts in Eastern 
+        <br>Malaysia record the <strong>highest cancer mortality rates</strong> despite having an overall lower cancer mortality rate in the state.
+        </p>
         <div class="grid">
             <div class="card" id="vis7"></div>
             <div class="card" id="vis8"></div>
@@ -77,8 +152,12 @@
 
     <section class="section">
         <h2>Section 5: The Healthcare Response & Infrastructure</h2>
-        <p>[SECTION 5 ANNOTATION]</p>
-        <div class="grid">
+        <p style="font-size: 18px">Are our hospitals <strong>properly equipped</strong> to handle the growing burden of cancer cases? 
+        <br>Surprisingly, higher per-capita healthcare spending on hospital beds <strong>do not guarantee a lower mortality rate</strong> from cancer.
+        <br>In fact, some of the states with the highest per-capita spending on hospital beds also have some of the highest cancer mortality rates.
+        <br>This suggests that there may be <strong>other factors involved</strong> in determining cancer mortality rates, such as the <strong>quality of care, access to early detection and treatment</strong>, and public health initiatives.
+        </p>
+        <div class="stack">
             <div class="card" id="vis9"></div>
             <div class="card" id="vis10"></div>
         </div>
@@ -86,12 +165,14 @@
 
     <footer>
         <h2>Conclusion</h2>
-        <p>[CONCLUSION ANNOTATION]</p>
+        <p style="font-size: 18px">In conclusion, the rising burden of cancer in Malaysia requires a <strong>multifaceted approach</strong> that addresses not only the medical 
+        <br>aspects but also the social, economic, and environmental factors that contribute to its incidence and mortality rates.
+        <br><strong>Adding more hospital beds is simply not enough anymore.</strong> We must <strong>prioritize early detection and prevention strategies</strong>, invest in research and development for better treatments, and ensure <strong>equitable access to healthcare services</strong> across all regions of the country.
+        </p>
     </footer>
 </div>
 
 <script>
-    // Embed the charts
     vegaEmbed('#vis1', 'chart1_expenditure.json');
     vegaEmbed('#vis2', 'chart2_age_factor.json');
     vegaEmbed('#vis3', 'chart3_gender_divide.json');
@@ -100,8 +181,11 @@
     vegaEmbed('#vis6', 'chart6_women_top_threats.json');
     vegaEmbed('#vis7', 'chart7_mortality_map.json');
     vegaEmbed('#vis8', 'chart8_hotspot_zoom.json');
-    vegaEmbed('#vis9', 'chart9_resource_dotplot.json'); // Updated file name from previous pivot
+    vegaEmbed('#vis9', 'chart9_resource_dotplot.json'); 
     vegaEmbed('#vis10', 'chart10_regression_scatter_plot.json');
+    vegaEmbed('#vis11', 'chart11_male_wafflechart.json');
+    vegaEmbed('#vis13', 'chart13_female_wafflechart.json');
+    vegaEmbed('#vis12', 'chart12_slopegraph.json');
 </script>
 
 </body>

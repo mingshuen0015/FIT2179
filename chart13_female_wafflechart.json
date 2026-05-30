@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega-lite.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Female Lifetime Risk",
+    "subtitle": "1 in 9 Malaysian females will develop cancer in their lifetime before turning 75.",
+    "anchor": "start",
+    "subtitleColor": "#64748b"
+  },
+  "width": 325,
+  "height": 325,
+  "data": {
+    "sequence": {"start": 1, "stop": 101, "as": "id"}
+  },
+  "transform": [
+    {
+      "calculate": "datum.id <= 11 ? 'At Risk' : 'Average Profile'",
+      "as": "Status"
+    },
+    {
+      "calculate": "ceil(datum.id / 10)",
+      "as": "Row"
+    },
+    {
+      "calculate": "(datum.id - 1) % 10",
+      "as": "Col"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 3,
+    "stroke": "white",
+    "strokeWidth": 2.5
+  },
+  "encoding": {
+    "x": {"field": "Col", "type": "ordinal", "axis": null},
+    "y": {"field": "Row", "type": "ordinal", "axis": null, "sort": "descending"},
+    "color": {
+      "field": "Status",
+      "type": "nominal",
+      "scale": {
+        "domain": ["At Risk", "Average Profile"],
+        "range": ["#e377c2", "#e2e8f0"]
+      },
+      "legend": {
+        "title": null,
+        "orient": "right",
+        "offset": 15,
+        "labelFontSize": 11,
+        "labelExpr": "datum.label === 'At Risk' ? 'Female Risk Profile (1 in 9)' : 'Cancer-Free Average'"
+      }
+    },
+    "tooltip": [
+      {"field": "Status", "type": "nominal", "title": "Population Status"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "background": "transparent"
+  }
+}

@@ -2,51 +2,95 @@
   "$schema": "https://vega-lite.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Gap Analysis: Bed Availability vs. Cancer Mortality",
-    "subtitle": "Is there a correlation between infrastructure and outcomes?",
-    "anchor": "start"
+    "subtitle": "Is there a correlation between healthcare infrastructure and patient outcomes?",
+    "anchor": "start",
+    "offset": 15
   },
-  "width": 400,
-  "height": 300,
+  "width": 1000,
+  "height": 500,
   "data": {
     "url": "merged_beds_mortality.csv"
   },
   "layer": [
     {
-      "mark": {"type": "circle", "size": 150, "color": "#1f77b4", "stroke": "white", "strokeWidth": 1},
+      "mark": {
+        "type": "circle", 
+        "size": 120, 
+        "color": "#1f77b4", 
+        "stroke": "white", 
+        "strokeWidth": 1,
+        "opacity": 0.8
+      },
       "encoding": {
         "x": {
-          "field": "beds", 
+          "field": "beds_per_100k", 
           "type": "quantitative", 
-          "title": "Total MOH Hospital Beds",
-          "scale": {"zero": false}
+          "title": "MOH Hospital Beds (per 100k Population)",
+          "scale": {"zero": false, "padding": 20}
         },
         "y": {
-          "field": "MortalityRate", 
+          "field": "mortality_rate", 
           "type": "quantitative", 
           "title": "Cancer Mortality Rate (per 100k)",
-          "scale": {"zero": false}
+          "scale": {"zero": false, "padding": 20}
         },
         "tooltip": [
-          {"field": "State", "type": "nominal"},
-          {"field": "beds", "type": "quantitative", "title": "Beds", "format": ","},
-          {"field": "MortalityRate", "type": "quantitative", "title": "Mortality Rate", "format": ".1f"}
+          {"field": "State", "type": "nominal", "title": "State"},
+          {"field": "beds_per_100k", "type": "quantitative", "title": "Beds per 100k", "format": ".1f"},
+          {"field": "beds", "type": "quantitative", "title": "Total Beds", "format": ","},
+          {"field": "mortality_rate", "type": "quantitative", "title": "Mortality Rate", "format": ".1f"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 8, "dy": -4, "fontSize": 11},
+      "mark": {
+        "type": "text", 
+        "align": "left", 
+        "dx": 10, 
+        "dy": 0, 
+        "fontSize": 11, 
+        "color": "#444"
+      },
       "encoding": {
-        "x": {"field": "beds", "type": "quantitative"},
-        "y": {"field": "MortalityRate", "type": "quantitative"},
+        "x": {"field": "beds_per_100k", "type": "quantitative"},
+        "y": {"field": "mortality_rate", "type": "quantitative"},
         "text": {"field": "State", "type": "nominal"}
       }
     },
     {
-      "mark": {"type": "line", "color": "firebrick", "strokeDash": [5, 5]},
-      "transform": [{"regression": "MortalityRate", "on": "beds"}],
+      "mark": {
+        "type": "line", 
+        "color": "#d95f02", 
+        "strokeDash": [5, 5], 
+        "opacity": 0.6
+      },
+      "transform": [{"regression": "mortality_rate", "on": "beds_per_100k"}],
       "encoding": {
-        "x": {"field": "beds", "type": "quantitative"},
-        "y": {"field": "MortalityRate", "type": "quantitative"}
+        "x": {"field": "beds_per_100k", "type": "quantitative"},
+        "y": {"field": "mortality_rate", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "color": "#d95f02",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {"value": 15},
+        "y": {"value": 10},
+        "text": {
+          "value": [
+            "The trendline reveals a counter-intuitive gap:",
+            "Higher per-capita bed availability does not",
+            "consistently translate to lower mortality."
+          ]
+        }
       }
     }
   ],

@@ -5,12 +5,12 @@
     "subtitle": "Total bed capacity across states",
     "anchor": "start"
   },
-  "width": 400,
-  "height": 300,
+  "width": 900,
+  "height": 500,
   "data": {
     "url": "beds_by_state.csv"
   },
-  "mark": {"type": "circle", "size": 150, "color": "#2ca02c"},
+  "mark": {"type": "circle", "size": 150, "color": "#1f77b4"},
   "encoding": {
     "y": {
       "field": "State",
@@ -26,7 +26,7 @@
     },
     "tooltip": [
       {"field": "State", "type": "nominal"},
-      {"field": "beds", "type": "quantitative", "title": "Total Beds"}
+      {"field": "beds", "type": "quantitative", "title": "Total Beds", "format": ","}
     ]
   },
   "config": {

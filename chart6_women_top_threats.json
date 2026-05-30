@@ -2,38 +2,68 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Top Cancer Threats: Women (2017-2021)",
-    "anchor": "start",
+    "subtitle": "Percentage of total cases by cancer type",
+    "anchor": "middle",
     "fontSize": 16,
     "fontWeight": "bold"
   },
-  "width": 400,
+  "width": 500,
   "height": 300,
   "data": {
     "values": [
-      {"Cancer_Type": "Breast", "Incidence": 34.1, "x0": 0, "x1": 0.5, "y0": 0, "y1": 1},
-      {"Cancer_Type": "Colorectal", "Incidence": 12.7, "x0": 0.5, "x1": 1, "y0": 0, "y1": 0.5},
-      {"Cancer_Type": "Cervical", "Incidence": 8.2, "x0": 0.5, "x1": 1, "y0": 0.5, "y1": 0.75},
-      {"Cancer_Type": "Lung", "Incidence": 6.0, "x0": 0.5, "x1": 0.75, "y0": 0.75, "y1": 1},
-      {"Cancer_Type": "Nasopharynx", "Incidence": 2.5, "x0": 0.75, "x1": 1, "y0": 0.75, "y1": 1}
+      {"Cancer_Type": "Breast", "Incidence": 34.1},
+      {"Cancer_Type": "Colorectal", "Incidence": 12.7},
+      {"Cancer_Type": "Cervical", "Incidence": 8.2},
+      {"Cancer_Type": "Lung", "Incidence": 6.0},
+      {"Cancer_Type": "Nasopharynx", "Incidence": 2.5},
+      {"Cancer_Type": "Others", "Incidence": 36.5}
     ]
   },
-  "mark": {"type": "rect", "stroke": "#fff", "strokeWidth": 2},
-  "encoding": {
-    "x": {"field": "x0", "type": "quantitative", "axis": null},
-    "x2": {"field": "x1"},
-    "y": {"field": "y0", "type": "quantitative", "axis": null},
-    "y2": {"field": "y1"},
-    "color": {
-      "field": "Cancer_Type",
-      "type": "nominal",
-      "scale": {"scheme": "tableau10"},
-      "legend": {"title": "Cancer Type", "orient": "right"}
+  "transform": [
+    {
+      "calculate": "round((datum.Incidence / 100) * 91131)",
+      "as": "Calculated_Cases"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 80, "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "theta": {
+          "field": "Incidence", 
+          "type": "quantitative"
+        },
+        "order": {
+          "field": "Incidence",
+          "sort": "descending"
+        },
+        "color": {
+          "field": "Cancer_Type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Breast", "Colorectal", "Cervical", "Lung", "Nasopharynx", "Others"],
+            "range": ["#dd3497", "#1f77b4", "#9ecae1", "#ff7f0e", "#8c564b", "#cbd5e1"]
+          },
+          "legend": {
+            "title": null, 
+            "orient": "bottom", 
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {"field": "Cancer_Type", "type": "nominal", "title": "Type"},
+          {"field": "Incidence", "type": "quantitative", "title": "Percentage (%)", "format": ".1f"},
+          {"field": "Calculated_Cases", "type": "quantitative", "title": "Est. Cases", "format": ","}
+        ]
+      }
     },
-    "tooltip": [
-      {"field": "Cancer_Type", "type": "nominal"},
-      {"field": "Incidence", "type": "quantitative", "title": "Incidence Rate"}
-    ]
-  },
+    {
+      "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#dd3497", "text": "91,131"}
+    },
+    {
+      "mark": {"type": "text", "fontSize": 12, "color": "gray", "dy": 22, "text": "Total Cases"}
+    }
+  ],
   "config": {
     "view": {"stroke": null},
     "background": "transparent"

@@ -5,12 +5,12 @@
     "subtitle": "Premature cancer mortality rate per 100,000",
     "anchor": "start"
   },
-  "width": 400,
-  "height": 250,
+  "width": 350,
+  "height": 300,
   "data": {
     "url": "cancer_mortality_district_top10.csv"
   },
-  "mark": {"type": "bar", "color": "#d95f02", "cornerRadiusEnd": 4},
+  "mark": {"type": "bar", "cornerRadiusEnd": 4},
   "encoding": {
     "y": {
       "field": "District",
@@ -23,6 +23,21 @@
       "type": "quantitative",
       "title": "Mortality Rate",
       "axis": {"grid": true}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "scale": {
+        "range": [
+          "#1f77b4", 
+          "#ff7f0e", 
+          "#d62728", 
+          "#9467bd", 
+          "#8c564b", 
+          "#e377c2"
+        ]
+      },
+      "legend": {"orient": "bottom", "title": "State Region"}
     },
     "tooltip": [
       {"field": "District", "type": "nominal"},

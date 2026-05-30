@@ -1,7 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
-  "height": 100,
   "title": {
     "text": "Cancer Incidence by Age Bracket in 2023",
     "subtitle": "Total diagnoses recorded across different age demographics",
@@ -20,51 +18,70 @@
       {"Age_Group": "60+", "Cases": 137665}
     ]
   },
-  "layer": [
+  "spacing": 30,
+  "hconcat": [
     {
-      "mark": {"type": "rule", "color": "#8b0000"},
-      "encoding": {
-        "y": {
-          "field": "Age_Group",
-          "type": "ordinal",
-          "title": "Age Group",
-          "sort": ["0-14", "15-40", "41-59", "60+"],
-          "axis": {
-            "grid": false,
-            "labelFontSize": 12,
-            "titleFontSize": 12
-          } 
-        },
-        "x": {
-          "field": "Cases", 
-          "type": "quantitative", 
-          "axis": {"grid": false}
-        },
-        "x2": {"value": 0}
-      }
-    },
-    {
-      "mark": {"type": "circle", "size": 150, "color": "#8b0000", "opacity": 1},
-      "encoding": {
-        "y": {
-          "field": "Age_Group",
-          "type": "ordinal",
-          "sort": ["0-14", "15-40", "41-59", "60+"]
-        },
-        "x": {
-          "field": "Cases",
-          "type": "quantitative",
-          "title": "Number of Cases",
-          "axis": {
-            "grid": false,
-            "labelFontSize": 12,
-            "titleFontSize": 12
+      "width": 780,
+      "height": 120,
+      "layer": [
+        {
+          "mark": {"type": "rule", "color": "#1f77b4"},
+          "encoding": {
+            "y": {
+              "field": "Age_Group",
+              "type": "ordinal",
+              "title": "Age Group",
+              "sort": ["0-14", "15-40", "41-59", "60+"],
+              "axis": {"grid": false, "labelFontSize": 12, "titleFontSize": 12} 
+            },
+            "x": {"field": "Cases", "type": "quantitative"},
+            "x2": {"value": 0}
           }
         },
-        "tooltip": [
-          {"field": "Age_Group", "type": "ordinal", "title": "Age Bracket"},
-          {"field": "Cases", "type": "quantitative", "title": "Total Diagnoses", "format": ","}
-        ]
+        {
+          "mark": {"type": "circle", "size": 150, "color": "#1f77b4", "opacity": 1},
+          "encoding": {
+            "y": {"field": "Age_Group", "type": "ordinal", "sort": ["0-14", "15-40", "41-59", "60+"]},
+            "x": {
+              "field": "Cases", 
+              "type": "quantitative", 
+              "title": "Number of Cases", 
+              "axis": {"grid": true}
+            },
+            "tooltip": [
+              {"field": "Age_Group", "type": "ordinal", "title": "Age Bracket"},
+              {"field": "Cases", "type": "quantitative", "title": "Total Diagnoses", "format": ","}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "data": {"values": [{}]},
+      "width": 160,
+      "height": 120,
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "text": [
+          "Over 70% of all recorded",
+          "cancer diagnoses occur in",
+          "the senior demographic (60+).",
+          "",
+          "This exponential risk emphasizes",
+          "the critical window for early",
+          "preventive screening during",
+          "patients' 40s and 50s."
+        ],
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#64748b",
+        "lineHeight": 18
+      },
+      "encoding": {
+        "x": {"value": 0},
+        "y": {"value": 0}
       }
     }
   ],

@@ -1,37 +1,163 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "MOH Total Health Expenditure (2013-2022)",
-  "width": 600,
+  "title": {
+    "text": "Healthcare Expenditure: Malaysia vs. SEA Peers (2013-2022)",
+    "subtitle": "Current health expenditure as a percentage of GDP (%)",
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": "bold"
+  },
+  "width": 1000,
   "height": 300,
   "data": {
-    "url": "mnha_moh.csv"
-  },
-  "mark": {
-    "type": "area",
-    "line": {"color": "#d95f02"},
-    "color": {
-      "gradient": "linear",
-      "stops": [
-        {"offset": 0, "color": "white"},
-        {"offset": 1, "color": "#d95f02"}
-      ]
-    }
-  },
-  "encoding": {
-    "x": {
-      "field": "date",
-      "type": "temporal",
-      "title": "Year",
-      "axis": {"format": "%Y"}
-    },
-    "y": {
-      "field": "expenditure",
-      "type": "quantitative",
-      "title": "Expenditure (RM)"
-    },
-    "tooltip": [
-      {"field": "date", "type": "temporal", "title": "Year", "format": "%Y"},
-      {"field": "expenditure", "type": "quantitative", "title": "Total RM", "format": ",.0f"}
+    "values": [
+      {"Year": "2013-01-01", "Country": "Malaysia", "Exp_GDP": 3.9},
+      {"Year": "2014-01-01", "Country": "Malaysia", "Exp_GDP": 4.0},
+      {"Year": "2015-01-01", "Country": "Malaysia", "Exp_GDP": 4.0},
+      {"Year": "2016-01-01", "Country": "Malaysia", "Exp_GDP": 4.0},
+      {"Year": "2017-01-01", "Country": "Malaysia", "Exp_GDP": 4.1},
+      {"Year": "2018-01-01", "Country": "Malaysia", "Exp_GDP": 4.1},
+      {"Year": "2019-01-01", "Country": "Malaysia", "Exp_GDP": 4.3},
+      {"Year": "2020-01-01", "Country": "Malaysia", "Exp_GDP": 5.0},
+      {"Year": "2021-01-01", "Country": "Malaysia", "Exp_GDP": 5.1},
+      {"Year": "2022-01-01", "Country": "Malaysia", "Exp_GDP": 5.0},
+
+      {"Year": "2013-01-01", "Country": "Singapore", "Exp_GDP": 3.9},
+      {"Year": "2014-01-01", "Country": "Singapore", "Exp_GDP": 4.0},
+      {"Year": "2015-01-01", "Country": "Singapore", "Exp_GDP": 4.3},
+      {"Year": "2016-01-01", "Country": "Singapore", "Exp_GDP": 4.4},
+      {"Year": "2017-01-01", "Country": "Singapore", "Exp_GDP": 4.4},
+      {"Year": "2018-01-01", "Country": "Singapore", "Exp_GDP": 4.4},
+      {"Year": "2019-01-01", "Country": "Singapore", "Exp_GDP": 4.5},
+      {"Year": "2020-01-01", "Country": "Singapore", "Exp_GDP": 5.8},
+      {"Year": "2021-01-01", "Country": "Singapore", "Exp_GDP": 5.7},
+      {"Year": "2022-01-01", "Country": "Singapore", "Exp_GDP": 5.9},
+
+      {"Year": "2013-01-01", "Country": "Thailand", "Exp_GDP": 3.7},
+      {"Year": "2014-01-01", "Country": "Thailand", "Exp_GDP": 3.8},
+      {"Year": "2015-01-01", "Country": "Thailand", "Exp_GDP": 3.8},
+      {"Year": "2016-01-01", "Country": "Thailand", "Exp_GDP": 3.9},
+      {"Year": "2017-01-01", "Country": "Thailand", "Exp_GDP": 3.9},
+      {"Year": "2018-01-01", "Country": "Thailand", "Exp_GDP": 3.9},
+      {"Year": "2019-01-01", "Country": "Thailand", "Exp_GDP": 4.0},
+      {"Year": "2020-01-01", "Country": "Thailand", "Exp_GDP": 4.4},
+      {"Year": "2021-01-01", "Country": "Thailand", "Exp_GDP": 4.6},
+      {"Year": "2022-01-01", "Country": "Thailand", "Exp_GDP": 4.5},
+
+      {"Year": "2013-01-01", "Country": "Indonesia", "Exp_GDP": 2.9},
+      {"Year": "2014-01-01", "Country": "Indonesia", "Exp_GDP": 2.8},
+      {"Year": "2015-01-01", "Country": "Indonesia", "Exp_GDP": 2.8},
+      {"Year": "2016-01-01", "Country": "Indonesia", "Exp_GDP": 2.8},
+      {"Year": "2017-01-01", "Country": "Indonesia", "Exp_GDP": 2.9},
+      {"Year": "2018-01-01", "Country": "Indonesia", "Exp_GDP": 2.9},
+      {"Year": "2019-01-01", "Country": "Indonesia", "Exp_GDP": 3.2},
+      {"Year": "2020-01-01", "Country": "Indonesia", "Exp_GDP": 3.4},
+      {"Year": "2021-01-01", "Country": "Indonesia", "Exp_GDP": 3.5},
+      {"Year": "2022-01-01", "Country": "Indonesia", "Exp_GDP": 3.4}
     ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "color": "#e0f2fe", "opacity": 0.6},
+      "encoding": {
+        "x": {"datum": {"year": 2020}, "type": "temporal"},
+        "x2": {"datum": {"year": 2023}}
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#1e3a8a", "strokeDash": [4, 4], "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"datum": {"year": 2020}, "type": "temporal"}
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#1e3a8a", "strokeDash": [4, 4], "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"datum": {"year": 2023}, "type": "temporal"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "COVID-19 Period",
+        "color": "#1e3a8a",
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "align": "left",
+        "dx": 12,
+        "dy": 135
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2020}, "type": "temporal"}
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {"format": "%Y", "grid": false}
+        },
+        "y": {
+          "field": "Exp_GDP",
+          "type": "quantitative",
+          "title": "Health Expenditure (% of GDP)",
+          "scale": {"zero": false}
+        },
+        "color": {
+          "field": "Country",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Malaysia", "Singapore", "Thailand", "Indonesia"],
+            "range": ["#e63946", "#475569", "#71717a", "#a1a1aa"]
+          },
+          "legend": null
+        },
+        "size": {
+          "condition": {"test": "datum.Country == 'Malaysia'", "value": 5},
+          "value": 2
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
+          {"field": "Exp_GDP", "type": "quantitative", "title": "% of GDP", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "year(datum.Year) == 2022"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Exp_GDP", "type": "quantitative"},
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {
+          "field": "Country",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Malaysia", "Singapore", "Thailand", "Indonesia"],
+            "range": ["#e63946", "#475569", "#71717a", "#a1a1aa"]
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
   }
 }
