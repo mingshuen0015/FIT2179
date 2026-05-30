@@ -1,16 +1,16 @@
-State,MortalityRate,state,beds
-Johor,67.15761803829504,Johor,8602
-Kedah,77.4400294357681,Kedah,5524
-Kelantan,65.80059741870033,Kelantan,4282
-Melaka,70.96296110224947,Melaka,2620
-Negeri Sembilan,75.32334240808552,Negeri Sembilan,3882
-Pahang,58.214388701534816,Pahang,4712
-Perak,81.75207242351645,Perak,7954
-Perlis,72.37466730999705,Perlis,1016
-Pulau Pinang,68.15178942416135,Pulau Pinang,4276
-Sabah,64.2,Sabah,8106
-Sarawak,78.60329508959624,Sarawak,7306
-Selangor,53.18860482071715,Selangor,13302
-Terengganu,70.85437237157147,Terengganu,3460
-W.P. Kuala Lumpur,62.345462842104155,W.P. Kuala Lumpur,3106
-W.P. Labuan,42.421130188215855,W.P. Labuan,244
+State,mortality_rate,state,beds,state,beds_per_100k
+Johor,67.15761804,Johor,8602,Johor,214
+Kedah,77.44002944,Kedah,5524,Kedah,258.1
+Kelantan,65.80059742,Kelantan,4282,Kelantan,234
+Melaka,70.9629611,Melaka,2620,Melaka,262
+Negeri Sembilan,75.32334241,Negeri Sembilan,3882,Negeri Sembilan,323.5
+Pahang,58.2143887,Pahang,4712,Pahang,294.5
+Perak,81.75207242,Perak,7954,Perak,318.2
+Perlis,72.37466731,Perlis,1016,Perlis,350.3
+Pulau Pinang,68.15178942,Pulau Pinang,4276,Pulau Pinang,245.7
+Sabah,64.2,Sabah,8106,Sabah,237
+Sarawak,78.60329509,Sarawak,7306,Sarawak,297
+Selangor,53.18860482,Selangor,13302,Selangor,188.4
+Terengganu,70.85437237,Terengganu,3460,Terengganu,298.3
+W.P. Kuala Lumpur,62.34546284,W.P. Kuala Lumpur,3106,W.P. Kuala Lumpur,163.5
+W.P. Labuan,42.42113019,W.P. Labuan,244,W.P. Labuan,251.8
