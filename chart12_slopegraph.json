@@ -50,7 +50,7 @@
       "type": "nominal",
       "scale": {
         "domain": ["Breast", "Colorectal", "Lung", "Prostate", "Cervical"],
-        "range": ["#e377c2", "#ff7f0e", "#1f77b4", "#475569", "#9467bd"]
+        "range": ["#dd3497", "#1f77b4", "#ff7f0e", "#9467bd", "#9ecae1"]
       },
       "legend": {
         "title": "Threat Vector", 
